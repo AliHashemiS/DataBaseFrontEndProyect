@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontendBaseDeDatos';
+  public title = 'Visor de diagramas y privilegios de bases de datos';
 }

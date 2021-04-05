@@ -1,0 +1,34 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container centered">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 style="text-align: center;" class="panel-title">Please sign in</h3>
+  </div>
+    <div class="panel-body">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" accept-charset="UTF-8" role="form">
+              <fieldset>
+        <div class="form-group">
+            <input class="form-control" placeholder="Servidor" name="server" type="text" formControlName="server">
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Puerto" name="port" type="text" formControlName="port">
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Base de Datos" name="database" type="text" formControlName="database">
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Usuario" name="host" type="text" formControlName="host">
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Contraseña" name="password" type="password" value="" formControlName="password">
+        </div>
+        <button  class="btn btn-lg btn-success btn-block" type="submit" >Login</button>
+      </fieldset>
+        </form>
+    </div>
+	</div>
+</div>
