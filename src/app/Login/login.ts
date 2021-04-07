@@ -22,15 +22,19 @@ export class LoginComponent {
       port: [''], 
       database: [''], 
       password: [''], 
-      host: ['']
+      username: ['']
     });
   }
 
   onSubmit(){
-    this.config.getConfig().subscribe(rest =>{
-      console.log(rest);
-    });
-    //console.log(this.contactForm.value);
+    var result
+    /*this.contactForm.value son los datos que se resiben 
+    por medio del login y se mandan al backend para realizar la conexion*/
+    this.config.getConfig(this.contactForm.value).subscribe(rest =>{
+      result = rest
+    },() => {
+      alert("Error de conexion, datos erroneos revisar los datos!!!")
+  });
   }
 }
 

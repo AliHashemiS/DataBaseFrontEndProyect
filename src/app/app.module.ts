@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './Login/login';
+import { LoginComponent } from './login/login';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { LoginService } from './service/login-service';
 
