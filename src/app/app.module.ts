@@ -4,18 +4,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { LoginService } from './service/login-service';
+import { AppRoutingModule } from './app-routing.module';
+import { TablasComponent } from "./tablas/tablas";
+import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    TablasComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [LoginService],
-  bootstrap: [LoginComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
