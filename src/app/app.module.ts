@@ -7,6 +7,8 @@ import { LoginService } from './service/login-service';
 import { AppRoutingModule } from './app-routing.module';
 import { TablasComponent } from "./tablas/tablas";
 import { AppComponent } from './app.component';
+import { UserService } from './service/user-service';
+
 
 
 @NgModule({
@@ -22,7 +24,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
