@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { TablasComponent } from "./tablas/tablas";
 import { AppComponent } from './app.component';
 import { UserService } from './service/user-service';
+import { TablaService } from './service/tabla-service';
+import { AtributePrivilegeService } from './service/attibute-service';
 
 
 
@@ -24,7 +26,7 @@ import { UserService } from './service/user-service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LoginService, UserService],
+  providers: [LoginService, UserService, TablaService, AtributePrivilegeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

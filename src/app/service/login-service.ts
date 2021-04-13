@@ -13,5 +13,4 @@ export class LoginService {
     let params = new HttpParams().set("server",server).set("port",port).set("database",database).set("password",password).set("username",username); //Create new HttpParam
     return this.http.get(this.configUrl, {params:params});
   }
-
 }
