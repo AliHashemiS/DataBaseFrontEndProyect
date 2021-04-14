@@ -1,29 +1,44 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+/>
 
 <div>
   <div class="navbar">
-    <p class="navbarText" style="text-align: center;">{{user.server}} <br>{{user.database}}</p>
+    <p class="navbarText" style="text-align: center">
+      {{user.server}} <br />{{user.database}}
+    </p>
   </div>
-  <div class="card center">
-    Seleccione una tabla: 
-    <select class="form-select" aria-label="Default select example" (change)=getTableAttributes($event.target.value)>
+  <div style="margin-top: 10%">
+    Seleccione una tabla:
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      (change)="getTableAttributes($event.target.value)"
+    >
       <option *ngFor="let tabla of tablas; let i = index" [selected]="i == 0">
         {{tabla}}
       </option>
     </select>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Atributo</th>
-          <th scope="col">Tipo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr (click)="getAttribute(atributos[0])" *ngFor="let atributos of atributosTabla; let i = index">
-          <th scope="row">{{atributos[0]}}</th>
-          <td>{{atributos[1]}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div *ngFor="let tabla of selectedtables;" style="margin-left: 200px;margin-right: 200px;">
+      <h1>{{tabla.name}}</h1>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Atributo</th>
+            <th scope="col" style="text-align: right;">Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            (click)="getAttribute(atributos[0], tabla.name)"
+            *ngFor="let atributos of tabla.attributes; let i = index"
+          >
+            <th scope="row">{{atributos[0]}}</th>
+            <th style="text-align: right;">{{atributos[1]}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>  
+</div>

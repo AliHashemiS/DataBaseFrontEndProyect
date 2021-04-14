@@ -16,6 +16,7 @@ export class TablasComponent {
   tablaSeleccionada = "";
   atributosTabla = [];
   privilegeTable = [];
+  selectedtables= [];
 
   constructor(private route: ActivatedRoute, private userService: UserService, private tabla: TablaService, private attributePrivilege: AtributePrivilegeService) { }
 
@@ -40,17 +41,35 @@ export class TablasComponent {
     element.style.marginLeft = '0px';
   }
 
-  getTableAttributes(tableName) {
-    this.tablaSeleccionada = tableName; 
-    this.tabla.getConfig(tableName).subscribe(rest =>{
-      this.atributosTabla = rest;
-    },(rest) => {
-      alert(rest)
-    });
+  tableExist(tableName) {
+    for (let index = 0; index < this.selectedtables.length; index++) {
+      const element = this.selectedtables[index];
+      if(element.name == tableName) {
+        return true;
+      }
+    }
+    return false;
   }
 
-  getAttribute(attribute) {
-    this.attributePrivilege.getConfig(this.tablaSeleccionada, attribute).subscribe(rest =>{
+  getTableAttributes(tableName) {
+    if(!this.tableExist(tableName)) {
+      this.tablaSeleccionada = tableName; 
+      this.tabla.getConfig(tableName).subscribe(rest =>{
+        this.atributosTabla = rest;
+        const selectedTable = {
+          name: tableName,
+          attributes: rest
+        }
+        this.selectedtables.push(selectedTable)
+        console.log(this.selectedtables);
+      },(rest) => {
+        alert(rest)
+      });
+    }
+  }
+
+  getAttribute(attribute, clickedTable) {
+    this.attributePrivilege.getConfig(clickedTable, attribute).subscribe(rest =>{
       this.privilegeTable = rest;
       alert(rest.toString())
     },() => {
