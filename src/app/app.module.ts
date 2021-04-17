@@ -11,8 +11,7 @@ import { UserService } from './service/user-service';
 import { TablaService } from './service/tabla-service';
 import { AtributePrivilegeService } from './service/attibute-service';
 
-
-
+//Se importan los componentes y se agregan a declarations
 @NgModule({
   declarations: [
     LoginComponent,
@@ -26,6 +25,7 @@ import { AtributePrivilegeService } from './service/attibute-service';
     HttpClientModule,
     AppRoutingModule
   ],
+  //Los servicios utilizados para realizar la conexión se agregan en providers
   providers: [LoginService, UserService, TablaService, AtributePrivilegeService],
   bootstrap: [AppComponent]
 })

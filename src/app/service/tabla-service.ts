@@ -11,6 +11,7 @@ export class TablaService {
 
     configUrl = 'http://localhost:4000/api/table/attributes';
 
+    //Envia el nombre de la tabla seleccionada para recibir los atributos de esta
     getConfig(tableName:string):Observable<any> {
         this.usuario = this.userService.getUser();
         let params = new HttpParams()

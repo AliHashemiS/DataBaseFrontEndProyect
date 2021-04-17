@@ -20,6 +20,7 @@ export class LoginComponent {
 
   contactForm: FormGroup;
 
+  //Formulario utilizado para obtener las credenciales necesarias para establecer una conexion a postgres
   createContactForm(){
     this.contactForm = this.formBuilder.group({
       server: [''], 

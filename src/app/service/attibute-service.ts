@@ -9,8 +9,10 @@ export class AtributePrivilegeService {
 
     constructor(private http: HttpClient, private userService: UserService) { }
 
+    //Url para obtener los privilegios desde el back end
     configUrl = 'http://localhost:4000/api/table/attributes/privilege';
 
+    //Realiza un http request enviando el atributo al  backend para obtener los privilegios
     getConfig(tableName:string, attribute:string):Observable<any> {
         this.usuario = this.userService.getUser();
         let params = new HttpParams()

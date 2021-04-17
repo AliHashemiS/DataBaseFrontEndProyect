@@ -11,6 +11,7 @@ import { AtributePrivilegeService } from '../service/attibute-service';
 })
 export class TablasComponent {
   public title = 'Visor de diagramas y privilegios de bases de datos';
+  //Variables utilizadas para mostrar las tablas en la vista
   tablas = [];
   user;
   tablaSeleccionada = "";
@@ -20,6 +21,7 @@ export class TablasComponent {
 
   constructor(private route: ActivatedRoute, private userService: UserService, private tabla: TablaService, private attributePrivilege: AtributePrivilegeService) { }
 
+  //Este hook se utiliza para cargar los datos iniciales despues de logearse
   ngOnInit() {
     this.user = this.userService.getUser();
     this.route.queryParams.subscribe(params => {
@@ -32,15 +34,7 @@ export class TablasComponent {
     });
   }
 
-  ngAfterViewInit() {
-    this.removeBodyLeftSpace();
-  }
-
-  removeBodyLeftSpace() {
-    const element = document.body
-    element.style.marginLeft = '0px';
-  }
-
+  //Esta función verifica si la tabla seleccionada en la vista ya existe  
   tableExist(tableName) {
     for (let index = 0; index < this.selectedtables.length; index++) {
       const element = this.selectedtables[index];
@@ -51,6 +45,8 @@ export class TablasComponent {
     return false;
   }
 
+  //Obtiene los atributos de la tabla seleccionada utilizado el service Tabla
+  //por medio de un petición http
   getTableAttributes(tableName) {
     if(!this.tableExist(tableName)) {
       this.tablaSeleccionada = tableName; 
@@ -68,6 +64,8 @@ export class TablasComponent {
     }
   }
 
+  //Obtiene los privilegios del atributo seleccionada utilizado el service AtributePrivilegeService
+  //por medio de un petición http
   getAttribute(attribute, clickedTable) {
     this.attributePrivilege.getConfig(clickedTable, attribute).subscribe(rest =>{
       this.privilegeTable = rest;
